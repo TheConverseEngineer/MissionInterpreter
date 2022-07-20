@@ -1,10 +1,11 @@
+#Mission Interpreter
 Conveniance Wrapper for reading alog files
 
 
-Usage examples:
+##Usage examples:
 
-Creating a new interpreter:
-itp = MissionInterpreter.createFromFile(filename)
+###Creating a new interpreter:
+    `itp = MissionInterpreter.createFromFile(filename)`
   
     This function comes with a number of optional optimizations:
        - filterRepeats: when true, ignore logs if the variable stays the same
@@ -13,10 +14,10 @@ itp = MissionInterpreter.createFromFile(filename)
        - ignoreBlanks   Setting this to true will cause the reader to skip over lines where no variables are set
        
        
-Reading data:
-If you want all datapoints for SOME_VARIABLE, run itp.getLogs("SOME_VARIABLE")
+###Reading data:
+  If you want all datapoints for SOME_VARIABLE, run `itp.getLogs("SOME_VARIABLE")`
     
-    If you want to access the data in a specific form, you can use the returnType argument. For example, setting returnType=float will cause the function to return a list of floats.
+    If you want to access the data in a specific form, you can use the returnType argument. For example, setting `returnType=float` will cause the function to return a list of floats.
     WARNING: trying to return an invalid type will cause an error (example, trying to get integers as floats)
     
 Reading times:
