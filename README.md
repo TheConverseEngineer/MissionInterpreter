@@ -36,7 +36,7 @@ Once again, you can use the returnType argument to specify which kind of variabl
 ### PLOTTING:
 NOTE: all plotting functions can be run in the same way:
     `import matplotlib.pyplot as plt
-    plt.scatter(*ipt.THE_FUNCTION_YOU_WANT_TO_USE)
+    plt.scatter(*itp.THE_FUNCTION_YOU_WANT_TO_USE)
     plt.show()`
 
 NOTE: Only data that can be represented as floats can be plotted with these functions
@@ -72,7 +72,7 @@ They can be used as such:
 
 Modifiers can also be used when plotting as such:
 
-    plt.scatter(*ipt.getTimedPlotValues("NAV_X", modifier=derivate))
+    plt.scatter(*itp.getTimedPlotValues("NAV_X", modifier=derivate))
     plt.show()
 
 This code will plot a graph of dx/dt over time
