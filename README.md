@@ -5,34 +5,34 @@ Conveniance Wrapper for reading alog files
 ## Usage examples:
 
 ### Creating a new interpreter:
-    `itp = MissionInterpreter.createFromFile(filename)`
+    itp = MissionInterpreter.createFromFile(filename)
   
-    This function comes with a number of optional optimizations:
-       - filterRepeats: when true, ignore logs if the variable stays the same
-       - include:       If you only want to look at certain variables, pass the names of those variables in a list
-       - exclude:       If you want to ignore certain variables, add them to this list.
-       - ignoreBlanks   Setting this to true will cause the reader to skip over lines where no variables are set
+This function comes with a number of optional optimizations:
+   - filterRepeats: when true, ignore logs if the variable stays the same
+   - include:       If you only want to look at certain variables, pass the names of those variables in a list
+   - exclude:       If you want to ignore certain variables, add them to this list.
+   - ignoreBlanks   Setting this to true will cause the reader to skip over lines where no variables are set
        
        
-###Reading data:
-  If you want all datapoints for SOME_VARIABLE, run `itp.getLogs("SOME_VARIABLE")`
+### Reading data:
+If you want all datapoints for SOME_VARIABLE, run `itp.getLogs("SOME_VARIABLE")`
     
-    If you want to access the data in a specific form, you can use the returnType argument. For example, setting `returnType=float` will cause the function to return a list of floats.
-    WARNING: trying to return an invalid type will cause an error (example, trying to get integers as floats)
+If you want to access the data in a specific form, you can use the returnType argument. For example, setting `returnType=float` will cause the function to return a list of floats.
+WARNING: trying to return an invalid type will cause an error (example, trying to get integers as floats)
     
-Reading times:
-    If you want a list of every time SOME_VARIABLE was changed, run itp.getTimes("SOME_VARIABLE") 
-    This function will always return a list of floats
+### Reading times:
+If you want a list of every time SOME_VARIABLE was changed, run `itp.getTimes("SOME_VARIABLE")`
+This function will always return a list of floats
     
-Mission start/end time:
-    The mission start and end times can easily be accessed with itp.startTime and itp.endTime, respectively
-    NOTE: unlike the alog_parser, this class does NOT create a LOGTIME key in the times dictionary.
+### Mission start/end time:
+The mission start and end times can easily be accessed with `itp.startTime` and `itp.endTime`, respectively
+NOTE: unlike the alog_parser, this class does NOT create a LOGTIME key in the times dictionary.
     
-Getting times and data:
-    If you want a combined list that has both timestamps and variable values, use itp.getTimedLogs("SOME_VARIABLE")
-    This will return a list in the following format: [(timestamp, new value), (timestamp, new value), (timestamp, new value), (timestamp, new value), ...]
-    Once again, you can use the returnType argument to specify which kind of variable you want (this will only affect values, not timestamps)
-    
+### Getting times and data:
+If you want a combined list that has both timestamps and variable values, use `itp.getTimedLogs("SOME_VARIABLE")`
+This will return a list in the following format: [(timestamp, new value), (timestamp, new value), (timestamp, new value), (timestamp, new value), ...]
+Once again, you can use the returnType argument to specify which kind of variable you want (this will only affect values, not timestamps)
+
 PLOTTING:
     NOTE: all plotting functions can be run in the same way:
         import matplotlib.pyplot as plt
