@@ -1,4 +1,6 @@
 import time
+import matplotlib.pyplot as plt
+import numpy as np
 
 class MissionInterpreter:
         
@@ -38,7 +40,7 @@ class MissionInterpreter:
         else: data = modifier(self.getLogs(name, returnType=float)) 
         return (self.getTimes(name), data);
         
-    def get2DTimedPlotValued(self, name: str, mod1=None, mod2=None) -> (list, list):
+    def get2DPlotValued(self, name1: str, name2: str, mod1=None, mod2=None) -> (list, list):
         """ Returns all the data needed to plot a graph showing the two given values
 
             A modifier in the form of a method from the modifiers subclass can be passed here
@@ -51,9 +53,9 @@ class MissionInterpreter:
     
     def getLambdaPlotValues(self, names: list, func) -> (list, list):
         """ Returns all the data needed to plot a graph showing the lambda value of the name list """
-        reps = min([len(self.logs[i]) for i in names])
-        data = [func(*[float(self.logs[i][j]) for i in names]) for j in range(reps)]
-        return (self.getTimes(names), data);
+        reps = min([(len(self.logs[i]), i) for i in names])
+        data = [func(*[float(self.logs[i][j]) for i in names]) for j in range(reps[0])]
+        return (self.getTimes(reps[1]), data);
     
     @staticmethod
     def createFromFile(filename: str, include=None, exclude=None, filterRepeats=False, ignoreBlanks=True):
@@ -98,7 +100,7 @@ class MissionInterpreter:
         def derivate(items: list) -> list:
             """ Derivates a list (position -> velocity, velocity -> acceleration, etc.). Secant approx. used """
             if (len(items) < 2): return [0] * len(items)
-            newlist = [0] * len(items)
+            newList = [0] * len(items)
             newList[0] = abs(items[0]-items[1])
             for i in range(1, len(items)):
                 newList[i] = abs(items[i]-items[i-1])
@@ -107,7 +109,7 @@ class MissionInterpreter:
         @staticmethod
         def integrate(items: list) -> list:
             """ Integrate a list (velocity -> position, acceleration -> velocity, etc.). Rieman sum used (no +C)"""
-            newlist = [0] * len(items)
+            newList = [0] * len(items)
             newList[0] = items[0]
             for i in range(1, len(items)):
                 newList[i] = newList[i-1] + items[i]
@@ -120,7 +122,4 @@ class MissionInterpreter:
             """ A simple function that appends a value to a dictionary, or adds it if the key is not present """
             if (key in dictionary): dictionary[key].append(value)
             else: dictionary[key] = [value]
-            
- 
-filename = "MOOSLog_19_7_2022_____15_23_35.alog"
-itp = MissionInterpreter.createFromFile(filename, filterRepeats=True)
+           
