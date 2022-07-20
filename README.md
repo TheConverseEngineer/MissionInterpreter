@@ -65,13 +65,15 @@ There are currently two modifiers, `derivate` (with derivates a list) and `integ
 NOTE: Data used with modifiers must be floats
 
 They can be used as such:
-    `x = itp.getLogs("Nav_X", returnType = float)
+
+    x = itp.getLogs("Nav_X", returnType = float)
     velocityOfX = MissionInterpreter.Modifiers.derivate(x)
-    otherX = MissionInterpreter.Modifiers.integrate(x)`
+    otherX = MissionInterpreter.Modifiers.integrate(x)
 
 Modifiers can also be used when plotting as such:
-    `plt.scatter(*ipt.getTimedPlotValues("NAV_X", modifier=derivate))
-    plt.show()`
+
+    plt.scatter(*ipt.getTimedPlotValues("NAV_X", modifier=derivate))
+    plt.show()
 
 This code will plot a graph of dx/dt over time
     
