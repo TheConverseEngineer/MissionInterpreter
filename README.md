@@ -72,7 +72,7 @@ They can be used as such:
 
 Modifiers can also be used when plotting as such:
 
-    plt.scatter(*itp.getTimedPlotValues("NAV_X", modifier=derivate))
+    plt.scatter(*itp.getTimedPlotValues("NAV_X", modifier=MissionInterpreter.Modifiers.derivate))
     plt.show()
 
 This code will plot a graph of dx/dt over time
