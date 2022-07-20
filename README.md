@@ -1,10 +1,10 @@
-#Mission Interpreter
+# Mission Interpreter
 Conveniance Wrapper for reading alog files
 
 
-##Usage examples:
+## Usage examples:
 
-###Creating a new interpreter:
+### Creating a new interpreter:
     `itp = MissionInterpreter.createFromFile(filename)`
   
     This function comes with a number of optional optimizations:
